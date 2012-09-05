@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataflow xmlns="http://www.example.org/mml-schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.example.org/mml-schema mml-schema.xsd ">
+
+    <input name="agencyId" type="String" />
+    
+	<variable name="data" type="String" />
+
+	<httpConnector name="connector" />
+	
+	<connect name="c1" connector="connector" outputVar="data" transformer="string">
+		<properties>
+			<property name="url">
+				<value>"http://213.21.154.84:7070/smart-planner/api-webapp/planner/getCarStations"</value>
+			</property>
+		</properties>
+	</connect>
+	
+    <script outputVar="output">
+        <className>eu.trentorise.smartcampus.services.smartplannerdata.impl.Script</className>
+        <method>createParkings</method>
+        <variables>
+            <value>data</value>
+            <value>agencyId</value>
+        </variables>
+    </script>
+</dataflow>

@@ -1,0 +1,40 @@
+package eu.trentorise.smartcampus.services.smartplannerdata.data.message;
+
+import "core.proto";
+
+message CarParkingStation {
+    required string id = 1;
+    required string agencyId = 2;
+    required string stationId = 3;
+    required int32 availablePlaces = 4;
+    required double lat = 5;
+    required double lng = 6;
+    required string address = 7;
+    optional int32 realAvailablePlaces = 8;
+}
+
+message CarSharingStation {
+    required string id = 1;
+    required string agencyId = 2;
+    required string stationId = 3;
+    required int32 availableCars = 4;
+    required double lat = 5;
+    required double lng = 6;
+    required string address = 7;
+    optional int32 realAvailableCars = 8;
+    optional int32 availableParkingPlaces = 9;
+    optional int32 realAvailableParkingPlaces = 10;
+}
+
+message BikeSharingStation {
+    required string id = 1;
+    required string agencyId = 2;
+    required string stationId = 3;
+    required int32 availableBikes = 4;
+    required double lat = 5;
+    required double lng = 6;
+    required string address = 7;
+    optional int32 realAvailableBikes = 8;
+    optional int32 availableParkingPlaces = 9;
+    optional int32 realAvailableParkingPlaces = 10;
+}

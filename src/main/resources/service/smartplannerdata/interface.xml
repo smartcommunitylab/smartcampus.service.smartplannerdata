@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service-definition xmlns="http://www.example.org/interface-schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.example.org/interface-schema ../interface-schema.xsd ">
+	<interface serviceURI="eu.trentorise.smartcampus.services.smartplannerdata.SmartplannerdataService">
+		<operation name="GetCarParking">
+			<parameter name="agencyId" type="java.lang.String"/>
+			<output
+				type="eu.trentorise.smartcampus.services.smartplannerdata.data.message.Smartplannerdata$CarParkingStation"
+				repeated="true" />
+		</operation>
+        <operation name="GetCarSharing">
+            <parameter name="agencyId" type="java.lang.String"/>
+            <output
+                type="eu.trentorise.smartcampus.services.smartplannerdata.data.message.Smartplannerdata$CarSharingStation"
+                repeated="true" />
+        </operation>
+        <operation name="GetBikeSharing">
+            <parameter name="agencyId" type="java.lang.String"/>
+            <output
+                type="eu.trentorise.smartcampus.services.smartplannerdata.data.message.Smartplannerdata$BikeSharingStation"
+                repeated="true" />
+        </operation>
+	</interface>
+
+	<implementation package="eu.trentorise.smartcampus.services.smartplannerdata">
+		<operationImpl name="GetCarParking" />
+        <operationImpl name="GetCarSharing" />
+        <operationImpl name="GetBikeSharing" />
+	</implementation>
+
+</service-definition>
