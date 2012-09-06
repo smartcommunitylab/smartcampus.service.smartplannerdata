@@ -115,6 +115,31 @@
                                      <validityPeriod>#{1000L*60*60*24*30}</validityPeriod>
                                  </statusParameters> 
                                </method>   
+                              <method>
+                                 <methodName>GetTransitStops</methodName>
+                                 <defaultParameters>
+                                        <parameters>
+                                            <parameter>
+                                                <key>agencyId</key>
+                                                <value>10</value>
+                                                <type>java.lang.String</type>
+                                            </parameter>
+                                        </parameters>
+                                        <parameters>
+                                            <parameter>
+                                                <key>agencyId</key>
+                                                <value>12</value>
+                                                <type>java.lang.String</type>
+                                            </parameter>
+                                        </parameters>
+                                 </defaultParameters>
+                                 <statusParameters>
+                                     <delay>#{1000L*10}</delay>
+                                     <period>#{1000L*60*60}</period>
+                                     <cacheValidityPeriod>#{1000L*60*60*2}</cacheValidityPeriod>
+                                     <validityPeriod>#{1000L*60*60*2}</validityPeriod>
+                                 </statusParameters> 
+                               </method>   
                             </methods>
                         </service>
                     </services>

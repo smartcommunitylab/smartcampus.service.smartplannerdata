@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataflow xmlns="http://www.example.org/mml-schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.example.org/mml-schema mml-schema.xsd ">
+
+	<input name="agencyId" type="String" />
+
+	<variable name="routesdata" type="String" />
+    <variable name="routedata" type="String" />
+    <variable name="stopdata" type="String" />
+	<variable name="routes" type="java.util.ArrayList&lt;java.util.HashMap&gt;" />
+    <variable name="stops" type="java.util.ArrayList&lt;java.util.HashMap&gt;" />
+    <variable name="stopDataMap" type="java.util.HashMap">
+        <body>new java.util.HashMap()</body>
+    </variable>
+
+	<httpConnector name="connector" />
+
+	<connect connector="connector" outputVar="routesdata"
+		transformer="string">
+		<properties>
+			<property name="url">
+				<value>"http://213.21.154.84:7070/smart-planner/rest/getroutes/"+agencyId</value>
+			</property>
+		</properties>
+	</connect>
+
+	<script outputVar="routes">
+		<className>eu.trentorise.smartcampus.services.smartplannerdata.impl.Script</className>
+		<method>readRoutes</method>
+		<variables>
+			<value>routesdata</value>
+		</variables>
+	</script>
+
+	<foreach item="route" itemClass="java.util.HashMap"  outputVar="dummy1" aggregateVariable="dummy1">
+		<items>routes</items>
+
+		<connect name="c1" connector="connector" outputVar="routedata" transformer="string">
+			<properties>
+				<property name="url">
+					<value>"http://213.21.154.84:7070/smart-planner/rest/getstops/"+agencyId+"/"+route.get("id")</value>
+				</property>
+			</properties>
+		</connect>
+
+		<script outputVar="stops">
+			<className>eu.trentorise.smartcampus.services.smartplannerdata.impl.Script</className>
+			<method>readStops</method>
+			<variables>
+				<value>routedata</value>
+				<value>route</value>
+			</variables>
+		</script>
+		
+        <foreach item="stop" itemClass="java.util.HashMap"  outputVar="dummy2" aggregateVariable="dummy2">
+	        <items>stops</items>
+	        <connect name="c1" connector="connector" outputVar="stopdata" transformer="string">
+	            <properties>
+	                <property name="url">
+	                    <value>"http://213.21.154.84:7070/smart-planner/rest/gettimetable/"+agencyId+"/"+route.get("id")+"/"+stop.get("id")</value>
+	                </property>
+	            </properties>
+	        </connect>
+	
+	        <script outputVar="stopDataMap">
+	            <className>eu.trentorise.smartcampus.services.smartplannerdata.impl.Script</className>
+	            <method>mergeStopData</method>
+	            <variables>
+                    <value>stopdata</value>
+                    <value>stop</value>
+	                <value>stopDataMap</value>
+	            </variables>
+	        </script>
+        </foreach>
+	</foreach>
+
+    <script outputVar="output">
+        <className>eu.trentorise.smartcampus.services.smartplannerdata.impl.Script</className>
+        <method>convertStopData</method>
+        <variables>
+            <value>stopDataMap</value>
+        </variables>
+    </script>
+    
+
+</dataflow>

@@ -20,12 +20,19 @@
                 type="eu.trentorise.smartcampus.services.smartplannerdata.data.message.Smartplannerdata$BikeSharingStation"
                 repeated="true" />
         </operation>
+        <operation name="GetTransitStops">
+            <parameter name="agencyId" type="java.lang.String"/>
+            <output
+                type="eu.trentorise.smartcampus.services.smartplannerdata.data.message.Smartplannerdata$TransitStop"
+                repeated="true" />
+        </operation>
 	</interface>
 
 	<implementation package="eu.trentorise.smartcampus.services.smartplannerdata">
 		<operationImpl name="GetCarParking" />
         <operationImpl name="GetCarSharing" />
         <operationImpl name="GetBikeSharing" />
+        <operationImpl name="GetTransitStops" />
 	</implementation>
 
 </service-definition>

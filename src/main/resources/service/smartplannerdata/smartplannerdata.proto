@@ -38,3 +38,26 @@ message BikeSharingStation {
     optional int32 availableParkingPlaces = 9;
     optional int32 realAvailableParkingPlaces = 10;
 }
+
+message TransitStop {
+    required string id = 1;
+    required string agencyId = 2;
+    required string stopId = 3;
+    required string name = 4;
+    required double lat = 5;
+    required double lng = 6;
+    repeated RouteTimetable timetable = 7;
+    optional string url = 8;
+}
+
+message RouteTimetable {
+    required string routeId = 1;
+    required string routeLongName = 2;
+    required string routeShortName = 3;
+    repeated TripTime tripTime = 5; 
+}
+
+message TripTime {
+    required string tripId = 1;
+    required int64 time = 2;
+}
