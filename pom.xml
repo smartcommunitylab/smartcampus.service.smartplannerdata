@@ -67,7 +67,7 @@
                                         <parameters>
                                             <parameter>
                                                 <key>agencyId</key>
-                                                <value>COMUNE DI TRENTO</value>
+                                                <value>COMUNE_DI_TRENTO</value>
                                                 <type>java.lang.String</type>
                                             </parameter>
                                         </parameters>
@@ -85,7 +85,7 @@
                                         <parameters>
                                             <parameter>
                                                 <key>agencyId</key>
-                                                <value>CAR-SHARING SERVICE</value>
+                                                <value>CAR_SHARING_SERVICE</value>
                                                 <type>java.lang.String</type>
                                             </parameter>
                                         </parameters>
@@ -103,7 +103,7 @@
                                         <parameters>
                                             <parameter>
                                                 <key>agencyId</key>
-                                                <value>BIKE-SHARING-SERVICE</value>
+                                                <value>BIKE_SHARING_COMUNE</value>
                                                 <type>java.lang.String</type>
                                             </parameter>
                                         </parameters>

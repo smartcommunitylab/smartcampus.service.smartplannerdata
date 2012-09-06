@@ -25,8 +25,8 @@ public class Script {
 			CarParkingStation.Builder builder = CarParkingStation.newBuilder();
 			builder.setAgencyId(oAgencyId);
 			builder.setId((String)station.get("id"));
-			builder.setStationId(builder.getId()+"@"+builder.getAgencyId());
-			builder.setAddress((String)map.get("id"));
+			builder.setStationId((String)map.get("id"));
+			builder.setAddress(station.get("id"));
 			builder.setAvailablePlaces((Integer)map.get("posts"));
 			List<Double> position = (List<Double>) map.get("position");
 			builder.setLat(position.get(0));
@@ -48,8 +48,8 @@ public class Script {
 			CarSharingStation.Builder builder = CarSharingStation.newBuilder();
 			builder.setAgencyId(oAgencyId);
 			builder.setId((String)station.get("id"));
-			builder.setStationId(builder.getId()+"@"+builder.getAgencyId());
-			builder.setAddress((String)map.get("id"));
+			builder.setStationId((String)map.get("id"));
+			builder.setAddress(station.get("id"));
 			builder.setAvailableCars((Integer)map.get("availableSharingVehicles"));
 			builder.setAvailableParkingPlaces((Integer)map.get("posts"));
 			List<Double> position = (List<Double>) map.get("position");
@@ -59,6 +59,7 @@ public class Script {
 		}
 		return result;
 	}
+	@SuppressWarnings("unchecked")
 	public List<?> createBikeSharings(String data, String agencyId) throws Exception {
 		List<Map<String,Object>> maps = new ObjectMapper().readValue(data, List.class);
 		List<BikeSharingStation> result = new ArrayList<Smartplannerdata.BikeSharingStation>();
@@ -70,8 +71,8 @@ public class Script {
 			BikeSharingStation.Builder builder = BikeSharingStation.newBuilder();
 			builder.setAgencyId(oAgencyId);
 			builder.setId((String)station.get("id"));
-			builder.setStationId(builder.getId()+"@"+builder.getAgencyId());
-			builder.setAddress((String)map.get("id"));
+			builder.setStationId((String)map.get("id"));
+			builder.setAddress(station.get("id"));
 			builder.setAvailableBikes((Integer)map.get("availableSharingVehicles"));
 			builder.setAvailableParkingPlaces((Integer)map.get("posts"));
 			List<Double> position = (List<Double>) map.get("position");
