@@ -13,7 +13,7 @@
         <body>new java.util.HashMap()</body>
     </variable>
 
-	<httpConnector name="connector" />
+	<httpConnector name="connector" encoding="UTF-8" />
 
 	<connect connector="connector" outputVar="routesdata"
 		transformer="string">
