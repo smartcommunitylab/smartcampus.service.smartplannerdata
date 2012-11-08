@@ -11,7 +11,7 @@
 	<connect name="c1" connector="connector" outputVar="data" transformer="string">
 		<properties>
 			<property name="url">
-				<value>"http://services-dev.sc.trentorise.eu:7170/smart-planner/api-webapp/planner/getCarStations"</value>
+				<value>"http://services.sc.trentorise.eu:7070/smart-planner/api-webapp/planner/getCarStations"</value>
 			</property>
 		</properties>
 	</connect>
