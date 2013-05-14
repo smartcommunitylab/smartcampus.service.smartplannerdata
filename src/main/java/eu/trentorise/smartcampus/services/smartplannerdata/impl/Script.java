@@ -45,7 +45,7 @@ public class Script {
 			builder.setAgencyId(oAgencyId);
 			builder.setId((String)station.get("id"));
 			builder.setStationId((String)map.get("id"));
-			builder.setAddress(station.get("id"));
+			builder.setAddress((String)map.get("fullName"));
 			builder.setAvailablePlaces((Integer)map.get("posts"));
 			List<Double> position = (List<Double>) map.get("position");
 			builder.setLat(position.get(0));
