@@ -34,7 +34,7 @@
 		transformer="string">
 		<properties>
 			<property name="url">
-				<value>"http://services.sc.trentorise.eu:7070/smart-planner/rest/getroutes/"+agencyId</value>
+				<value>"http://services.smartcampuslab.it:7070/smart-planner/rest/getroutes/"+agencyId</value>
 			</property>
 		</properties>
 	</connect>
@@ -53,7 +53,7 @@
 		<connect name="c1" connector="connector" outputVar="routedata" transformer="string">
 			<properties>
 				<property name="url">
-					<value>"http://services.sc.trentorise.eu:7070/smart-planner/rest/getstops/"+agencyId+"/"+route.get("id")</value>
+					<value>"http://services.smartcampuslab.it:7070/smart-planner/rest/getstops/"+agencyId+"/"+route.get("id")</value>
 				</property>
 			</properties>
 		</connect>
@@ -72,7 +72,7 @@
 	        <connect name="c1" connector="connector" outputVar="stopdata" transformer="string">
 	            <properties>
 	                <property name="url">
-	                    <value>"http://services.sc.trentorise.eu:7070/smart-planner/rest/gettimetable/"+agencyId+"/"+route.get("id")+"/"+stop.get("id")</value>
+	                    <value>"http://services.smartcampuslab.it:7070/smart-planner/rest/gettimetable/"+agencyId+"/"+route.get("id")+"/"+stop.get("id")</value>
 	                </property>
 	            </properties>
 	        </connect>
