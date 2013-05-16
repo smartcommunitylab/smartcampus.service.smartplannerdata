@@ -132,6 +132,7 @@ public class Script {
 		}
 		ArrayList<HashMap> result = new ArrayList<HashMap>();
 		for (Map<String,Object> map : maps) {
+			if (map == null) continue;
 			HashMap<String, Object> newMap = new HashMap<String, Object>();
 			newMap.putAll(map);
 			newMap.put("route", route);
